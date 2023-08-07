@@ -1,6 +1,6 @@
 # [Upmind](https://github.com/upmind-automation) - Webhook Endpoint
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/provision-provider-shared-hosting.svg?style=flat-square)](https://packagist.org/packages/upmind/provision-provider-shared-hosting)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/webhook-endpoint.svg?style=flat-square)](https://packagist.org/packages/upmind/webhook-endpoint)
 [![Test](https://github.com/upmind-automation/webhook-endpoint/actions/workflows/test.yml/badge.svg)](https://github.com/upmind-automation/webhook-endpoint/actions/workflows/test.yml)
 
 This library simplifies server implementations for receiving webhooks from Upmind with PHP.
@@ -37,7 +37,7 @@ The [examples/](/examples) directory contains sample code for how to use this li
 
 The following example shows how to consume and authenticate webhooks using plain PHP:
 
-https://github.com/upmind-automation/webhook-endpoint/blob/main/examples/vanilla-endpoint.php
+https://github.com/upmind-automation/webhook-endpoint/blob/36ed188d74cde958b59cdedb2d019be40e62352a/examples/vanilla-endpoint.php#L1-L38
 
 ## Testing
 
