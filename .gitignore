@@ -1,0 +1,7 @@
+build
+coverage
+vendor
+composer.lock
+.vscode/launch.json
+.php-cs-fixer.cache
+.phpunit.result.cache
