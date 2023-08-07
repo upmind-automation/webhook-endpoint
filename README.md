@@ -1,9 +1,9 @@
-# [Upmind](https://github.com/upmind-automation) - Webhook Endpoint
+# [Upmind Automation](https://github.com/upmind-automation) - Webhook Endpoint
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/webhook-endpoint.svg?style=flat-square)](https://packagist.org/packages/upmind/webhook-endpoint)
 [![Test](https://github.com/upmind-automation/webhook-endpoint/actions/workflows/test.yml/badge.svg)](https://github.com/upmind-automation/webhook-endpoint/actions/workflows/test.yml)
 
-This PHP library simplifies server implementations for receiving webhooks from Upmind.
+This PHP library simplifies server implementations for receiving webhooks from Upmind. Refer to the [Upmind Webhooks](https://docs.upmind.com/docs/webhooks) guide to configure your first webhook endpoint.
 
 - [Installation](#installation)
   - [Requirements](#requirements)
@@ -28,9 +28,7 @@ composer require upmind/webhook-endpoint
 
 ## Usage
 
-First, you should refer to the following guide to configure your webhook endpoint in Upmind: [https://docs.upmind.com/docs/webhooks](https://docs.upmind.com/docs/webhooks).
-
-The [examples/](/examples) directory contains sample code for how to use this library to implement your endpoint and consume Upmind webhooks.
+The [Examples](/examples) directory contains sample code for how to use this library to implement your endpoint and consume Upmind webhooks.
 
 ### Quick-start
 
