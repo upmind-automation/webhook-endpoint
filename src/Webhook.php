@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Upmind\Webhooks;
 
+use JsonSerializable;
 use Upmind\Webhooks\Auth\AuthInterface;
 use Upmind\Webhooks\Auth\Secret;
 use Upmind\Webhooks\Events\WebhookEvent;
@@ -11,7 +12,7 @@ use Upmind\Webhooks\Events\WebhookEvent;
 /**
  * Object encapsulating an incoming Upmind webhook.
  */
-class Webhook implements AuthInterface
+class Webhook implements AuthInterface, JsonSerializable
 {
     /**
      * @var string
@@ -104,5 +105,13 @@ class Webhook implements AuthInterface
                 return $event->toArray();
             }, $this->getEvents()),
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
     }
 }

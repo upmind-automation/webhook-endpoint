@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace Upmind\Webhooks\Tests;
 
 use Nyholm\Psr7\Factory\Psr17Factory;
-use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Http\Message\ServerRequestInterface;
-use ReflectionClass;
 use Upmind\Webhooks\Auth\Secret;
-use Upmind\Webhooks\Events\Version1EventFactory;
 use Upmind\Webhooks\WebhookFactory;
 
 /**

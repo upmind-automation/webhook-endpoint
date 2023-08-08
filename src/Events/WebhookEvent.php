@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Upmind\Webhooks\Events;
 
+use JsonSerializable;
+
 /**
  * Object encapsulating a webhook event.
  */
-class WebhookEvent
+class WebhookEvent implements JsonSerializable
 {
     /**
      * @var string
@@ -180,5 +182,13 @@ class WebhookEvent
             'actor' => $this->getActorData(),
             'brand' => $this->getBrandData(),
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
     }
 }
