@@ -110,7 +110,8 @@ class Webhook implements AuthInterface, JsonSerializable
     /**
      * @return array
      */
-    public function jsonSerialize(): mixed
+    #[\ReturnTypeWillChange]
+    public function jsonSerialize()
     {
         return $this->toArray();
     }
