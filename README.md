@@ -1,4 +1,4 @@
-# [Upmind Automation](https://github.com/upmind-automation) - Webhook Endpoint
+# [Upmind Automation](https://github.com/upmind-automation) - PHP Webhook Endpoint
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/webhook-endpoint.svg?style=flat-square)](https://packagist.org/packages/upmind/webhook-endpoint)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/upmind-automation/webhook-endpoint/test.yml?branch=main&label=Tests&style=flat-square)](https://github.com/upmind-automation/webhook-endpoint/actions?query=workflow%3Arun-tests+branch%3Amain)
