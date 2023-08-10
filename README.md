@@ -34,7 +34,7 @@ The [Examples](/examples) directory contains sample code for how to use this lib
 
 The following example shows how to consume and authenticate webhooks using plain PHP:
 
-https://github.com/upmind-automation/webhook-endpoint/blob/36ed188d74cde958b59cdedb2d019be40e62352a/examples/vanilla-endpoint.php#L1-L38
+https://github.com/upmind-automation/webhook-endpoint/blob/dce0b2ef01c7364c26867f04c2e5d742ebe20756/examples/vanilla-endpoint.php#L1-L41
 
 ## Testing
 
