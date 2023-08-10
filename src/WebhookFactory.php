@@ -53,6 +53,10 @@ class WebhookFactory
         $payload = file_get_contents(static::STDIN_STREAM_LOCATION);
         $signature = $_SERVER[$headerKey] ?? null;
 
+        if (empty($payload)) {
+            throw new InvalidPayloadException('Webhook payload empty or cannot be read');
+        }
+
         return $this->fromString($payload, $signature);
     }
 
