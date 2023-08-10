@@ -48,6 +48,15 @@ class WebhookFactoryTest extends TestCase
     }
 
     /** @test */
+    public function empty_stdin_throws_exception()
+    {
+        $this->expectException(\Upmind\Webhooks\Exceptions\InvalidPayloadException::class);
+
+        $factory = new WebhookFactory();
+        $factory->create();
+    }
+
+    /** @test */
     public function can_create_from_stdin()
     {
         $secret = $this->getValidSecret();
