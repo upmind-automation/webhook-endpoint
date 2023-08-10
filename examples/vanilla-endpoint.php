@@ -1,16 +1,13 @@
 <?php
 
-use Upmind\Webhooks\Exceptions\WebhookException;
-use Upmind\Webhooks\WebhookFactory;
-
 $endpointSecret = 'xxxxxxxxxx';
-$factory = new WebhookFactory($endpointSecret);
+$factory = new \Upmind\Webhooks\WebhookFactory($endpointSecret);
 
 try {
     // get the webhook instance and authenticate it
     $webhook = $factory->create();
     $webhook->assertValidAuth();
-} catch (WebhookException $e) {
+} catch (\Upmind\Webhooks\Exceptions\WebhookException $e) {
     http_response_code($e->getHttpCode());
     exit($e->getMessage());
 }
