@@ -9,5 +9,5 @@ namespace Upmind\Webhooks\Exceptions;
  */
 class InvalidAuthException extends WebhookException
 {
-    //
+    protected $httpCode = 401;
 }

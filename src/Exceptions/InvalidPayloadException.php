@@ -9,5 +9,5 @@ namespace Upmind\Webhooks\Exceptions;
  */
 class InvalidPayloadException extends WebhookException
 {
-    //
+    protected $httpCode = 400;
 }

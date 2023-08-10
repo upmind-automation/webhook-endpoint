@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Upmind\Webhooks\Tests;
 
 use Upmind\Webhooks\Events\Version1EventFactory;
+use Upmind\Webhooks\Exceptions\InvalidPayloadException;
 
 /**
  * @phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
@@ -32,7 +33,12 @@ class Version1EventFactoryTest extends TestCase
 
         $this->expectException(\Upmind\Webhooks\Exceptions\InvalidPayloadException::class);
 
-        $factory = new Version1EventFactory();
-        $factory->getEvents($data);
+        try {
+            $factory = new Version1EventFactory();
+            $factory->getEvents($data);
+        } catch (InvalidPayloadException $e) {
+            $this->assertEquals(400, $e->getHttpCode());
+            throw $e;
+        }
     }
 }

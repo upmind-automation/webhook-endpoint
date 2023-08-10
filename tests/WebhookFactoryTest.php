@@ -7,6 +7,8 @@ namespace Upmind\Webhooks\Tests;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Psr\Http\Message\ServerRequestInterface;
 use Upmind\Webhooks\Auth\Secret;
+use Upmind\Webhooks\Exceptions\InvalidPayloadException;
+use Upmind\Webhooks\Exceptions\UnsupportedVersionException;
 use Upmind\Webhooks\WebhookFactory;
 
 /**
@@ -43,8 +45,13 @@ class WebhookFactoryTest extends TestCase
     {
         $this->expectException(\Upmind\Webhooks\Exceptions\InvalidPayloadException::class);
 
-        $factory = new WebhookFactory();
-        $webhook = $factory->fromString('invalid payload');
+        try {
+            $factory = new WebhookFactory();
+            $factory->fromString('invalid payload');
+        } catch (InvalidPayloadException $e) {
+            $this->assertEquals(400, $e->getHttpCode());
+            throw $e;
+        }
     }
 
     /** @test */
@@ -52,8 +59,13 @@ class WebhookFactoryTest extends TestCase
     {
         $this->expectException(\Upmind\Webhooks\Exceptions\InvalidPayloadException::class);
 
-        $factory = new WebhookFactory();
-        $factory->create();
+        try {
+            $factory = new WebhookFactory();
+            $factory->create();
+        } catch (InvalidPayloadException $e) {
+            $this->assertEquals(400, $e->getHttpCode());
+            throw $e;
+        }
     }
 
     /** @test */
@@ -98,10 +110,14 @@ class WebhookFactoryTest extends TestCase
 
         $this->expectException(\Upmind\Webhooks\Exceptions\UnsupportedVersionException::class);
 
-        $factory = new WebhookFactory();
-        $webhook = $factory->fromString($payload);
-
-        $webhook->getEvents();
+        try {
+            $factory = new WebhookFactory();
+            $webhook = $factory->fromString($payload);
+            $webhook->getEvents();
+        } catch (UnsupportedVersionException $e) {
+            $this->assertEquals(400, $e->getHttpCode());
+            throw $e;
+        }
     }
 
     protected function getValidSecret(): Secret

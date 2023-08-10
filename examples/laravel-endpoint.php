@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Upmind\Webhooks\Auth\SignatureAuth;
-use Upmind\Webhooks\Exceptions\InvalidAuthException;
-use Upmind\Webhooks\Exceptions\InvalidPayloadException;
+use Upmind\Webhooks\Exceptions\WebhookException;
 use Upmind\Webhooks\WebhookFactory;
 
 class WebhookController extends Controller
@@ -23,10 +22,8 @@ class WebhookController extends Controller
             // create the webhook instance and authenticate it
             $webhook = $factory->fromString($payload, $signature);
             $webhook->assertValidAuth();
-        } catch (InvalidAuthException $e) {
-            return response($e->getMessage(), 401);
-        } catch (InvalidPayloadException $e) {
-            return response($e->getMessage(), 400);
+        } catch (WebhookException $e) {
+            return response($e->getMessage(), $e->getHttpCode());
         }
 
         // handle webhook events in a queued job to help avoid incoming webhook timeouts

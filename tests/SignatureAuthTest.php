@@ -6,6 +6,7 @@ namespace Upmind\Webhooks\Tests;
 
 use Upmind\Webhooks\Auth\Secret;
 use Upmind\Webhooks\Auth\SignatureAuth;
+use Upmind\Webhooks\Exceptions\InvalidAuthSignatureException;
 
 /**
  * @phpcs:disable PSR1.Methods.CamelCapsMethodName.NotCamelCaps
@@ -47,7 +48,12 @@ class SignatureAuthTest extends TestCase
 
         $this->expectException(\Upmind\Webhooks\Exceptions\InvalidAuthSignatureException::class);
 
-        $signatureAuth->assertValidAuth();
+        try {
+            $signatureAuth->assertValidAuth();
+        } catch (InvalidAuthSignatureException $e) {
+            $this->assertEquals(401, $e->getHttpCode());
+            throw $e;
+        }
     }
 
     /** @test */

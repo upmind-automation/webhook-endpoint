@@ -11,5 +11,18 @@ use RuntimeException;
  */
 class WebhookException extends RuntimeException
 {
-    //
+    /**
+     * @var int
+     */
+    protected $httpCode;
+
+    /**
+     * Get an appropriate HTTP response code for this exception.
+     *
+     * @return int
+     */
+    public function getHttpCode(): int
+    {
+        return $this->httpCode ?? 500;
+    }
 }
