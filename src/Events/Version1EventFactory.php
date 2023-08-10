@@ -26,9 +26,12 @@ class Version1EventFactory implements EventFactoryInterface
                     $data['hook_code'],
                     $data['hook_log_id'],
                     $data['object_type'],
+                    $data['object_id'],
                     $data['object'],
+                    $data['brand_id'],
                     $data['brand'],
                     $data['actor_type'],
+                    $data['actor_id'],
                     $data['actor']
                 ),
             ];

@@ -42,9 +42,19 @@ class WebhookEvent implements JsonSerializable
     protected $objectType;
 
     /**
+     * @var string
+     */
+    protected $objectId;
+
+    /**
      * @var array
      */
     protected $objectData;
+
+    /**
+     * @var string
+     */
+    protected $brandId;
 
     /**
      * @var array
@@ -55,6 +65,11 @@ class WebhookEvent implements JsonSerializable
      * @var string|null
      */
     protected $actorType;
+
+    /**
+     * @var string|null
+     */
+    protected $actorId;
 
     /**
      * @var array|null
@@ -68,9 +83,12 @@ class WebhookEvent implements JsonSerializable
         string $hookCode,
         string $hookLogId,
         string $objectType,
+        string $objectId,
         array $objectData,
+        string $brandId,
         array $brandData,
         ?string $actorType,
+        ?string $actorId,
         ?array $actorData
     ) {
         $this->id = $id;
@@ -79,9 +97,12 @@ class WebhookEvent implements JsonSerializable
         $this->hookCode = $hookCode;
         $this->hookLogId = $hookLogId;
         $this->objectType = $objectType;
+        $this->objectId = $objectId;
         $this->objectData = $objectData;
+        $this->brandId = $brandId;
         $this->brandData = $brandData;
         $this->actorType = $actorType;
+        $this->actorId = $actorId;
         $this->actorData = $actorData;
     }
 
@@ -134,6 +155,14 @@ class WebhookEvent implements JsonSerializable
     }
 
     /**
+     * Get the object ID for this event.
+     */
+    public function getObjectId(): string
+    {
+        return $this->objectId;
+    }
+
+    /**
      * Get the object data for this event.
      */
     public function getObjectData(): array
@@ -142,7 +171,7 @@ class WebhookEvent implements JsonSerializable
     }
 
     /**
-     * Get the actor type, if known.
+     * Get the actor type, if applicable.
      */
     public function getActorType(): ?string
     {
@@ -150,11 +179,27 @@ class WebhookEvent implements JsonSerializable
     }
 
     /**
-     * Get the actor data, if known.
+     * Get the actor ID, if applicable.
+     */
+    public function getActorId(): ?string
+    {
+        return $this->actorId;
+    }
+
+    /**
+     * Get the actor data, if applicable.
      */
     public function getActorData(): ?array
     {
         return $this->actorData;
+    }
+
+    /**
+     * Get the brand ID for this event.
+     */
+    public function getBrandId(): string
+    {
+        return $this->brandId;
     }
 
     /**
@@ -177,9 +222,12 @@ class WebhookEvent implements JsonSerializable
             'hook_code' => $this->getHookCode(),
             'hook_log_id' => $this->getHookLogId(),
             'object_type' => $this->getObjectType(),
+            'object_id' => $this->getObjectId(),
             'object' => $this->getObjectData(),
             'actor_type' => $this->getActorType(),
+            'actor_id' => $this->getActorId(),
             'actor' => $this->getActorData(),
+            'brand_id' => $this->getBrandId(),
             'brand' => $this->getBrandData(),
         ];
     }
